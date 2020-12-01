@@ -34,8 +34,10 @@ class CustomerUserSubscriber implements EventSubscriberInterface
         $method = $event->getRequest()->getMethod();
 
         if ($customer instanceof Customer && $method === 'POST') {
-            $user = $this->security->getUser();
-            $customer->setUser($user);
+            if (!$customer->getUser()) {
+                $user = $this->security->getUser();
+                $customer->setUser($user);
+            }
         }
     }
 }
