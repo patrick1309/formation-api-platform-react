@@ -1,5 +1,6 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import { LOGIN_API } from "../config";
 
 /**
  * Requête HTTP authentification et stockage du token sur axios et localstoratge
@@ -7,7 +8,7 @@ import jwtDecode from "jwt-decode";
  */
 function authenticate(credentials) {
   return axios
-    .post("http://localhost:8000/api/login_check", credentials)
+    .post(LOGIN_API, credentials)
     .then((response) => response.data.token)
     .then((token) => {
       // stock token dans le local storage
