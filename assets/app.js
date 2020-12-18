@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Route, Switch, withRouter } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import Navbar from "./js/components/Navbar";
 import PrivateRoute from "./js/components/PrivateRoute";
 import AuthContext from "./js/contexts/AuthContext";
@@ -14,6 +15,7 @@ import LoginPage from "./js/pages/LoginPage";
 import RegisterPage from "./js/pages/RegisterPage";
 import AuthAPI from "./js/services/authAPI";
 // any CSS you import will output into a single css file (app.css in this case)
+import "react-toastify/dist/ReactToastify.css";
 import "./styles/app.css";
 
 AuthAPI.setup();
@@ -34,7 +36,6 @@ const App = () => {
     >
       <HashRouter>
         <NavBarWithRouter />
-
         <main className="container pt-5">
           <Switch>
             <Route path="/login" component={LoginPage} />
@@ -47,6 +48,7 @@ const App = () => {
           </Switch>
         </main>
       </HashRouter>
+      <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
     </AuthContext.Provider>
   );
 };
