@@ -34,18 +34,16 @@ async function find(id) {
 
   if (cachedCustomer) return cachedCustomer;
 
-  return axios
-    .get(CUSTOMERS_API + "/" + id))
-    .then((response) => {
-      const customer = response.data;
-      Cache.set("customers." + id, customer);
-      return customer;
-    });
+  return axios.get(CUSTOMERS_API + "/" + id).then((response) => {
+    const customer = response.data;
+    Cache.set("customers." + id, customer);
+    return customer;
+  });
 }
 
 function update(id, customer) {
   return axios
-    .put(CUSTOMERS_API + "/" + id), customer)
+    .put(CUSTOMERS_API + "/" + id, customer)
     .then(async (response) => {
       const cachedCustomers = await Cache.get("customers");
       const cachedCustomer = await Cache.get("customers." + id);
@@ -64,17 +62,15 @@ function update(id, customer) {
 }
 
 function create(customer) {
-  return axios
-    .post(CUSTOMERS_API, customer)
-    .then(async (response) => {
-      const cachedCustomers = await Cache.get("customers");
+  return axios.post(CUSTOMERS_API, customer).then(async (response) => {
+    const cachedCustomers = await Cache.get("customers");
 
-      if (cachedCustomers) {
-        Cache.set("customers", [...cachedCustomers, response.data]);
-      }
+    if (cachedCustomers) {
+      Cache.set("customers", [...cachedCustomers, response.data]);
+    }
 
-      return response;
-    });
+    return response;
+  });
 }
 
 export default {
