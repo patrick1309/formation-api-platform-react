@@ -20,6 +20,7 @@ const FormContentLoader = (props) => {
       <rect x="0" y="220" rx="0" ry="0" width="151" height="15" />
       <rect x="0" y="245" rx="0" ry="0" width="719" height="15" />
       <rect x="0" y="290" rx="0" ry="0" width="151" height="15" />
+      <rect x="0" y="315" rx="0" ry="0" width="719" height="15" />
     </ContentLoader>
   );
 };

@@ -16,7 +16,7 @@ import RegisterPage from "./js/pages/RegisterPage";
 import AuthAPI from "./js/services/authAPI";
 // any CSS you import will output into a single css file (app.css in this case)
 import "react-toastify/dist/ReactToastify.css";
-import "./styles/app.css";
+import "./styles/app.scss";
 
 AuthAPI.setup();
 
