@@ -6,14 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CustomerRepository;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
-use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CustomerRepository::class)
@@ -82,16 +81,6 @@ class Customer
      * @Assert\NotBlank(message="L'utilisateur est obligatoire")
      */
     private $user;
-
-    /** 
-     * @var MediaObject|null
-     * 
-     * @ORM\ManyToOne(targetEntity=MediaObject::class)
-     * @Groups({"customers_read"})
-     * @ORM\JoinColumn(nullable=true)
-     * @ApiProperty(iri="http://schema.org/image")
-     */
-    private $picture;
 
     public function __construct()
     {
@@ -214,18 +203,6 @@ class Customer
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getPicture(): ?MediaObject
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(?MediaObject $picture): self
-    {
-        $this->picture = $picture;
 
         return $this;
     }

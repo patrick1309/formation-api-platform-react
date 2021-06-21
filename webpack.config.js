@@ -56,7 +56,7 @@ Encore
   })
 
   // enables Sass/SCSS support
-  .enableSassLoader()
+  //.enableSassLoader()
 
   // uncomment if you use TypeScript
   //.enableTypeScriptLoader()
@@ -74,7 +74,6 @@ Encore
 
 Encore.configureDefinePlugin((options) => {
   options["process.env"].API_URL = process.env.API_URL;
-  options["process.env"].PUBLIC_URL = process.env.PUBLIC_URL;
 });
 
 module.exports = Encore.getWebpackConfig();
