@@ -35,13 +35,8 @@ const CustomerPage = ({ match, history }) => {
   // récupération du customer en fonction de l'ID
   const fetchCustomer = async (id) => {
     try {
-      const {
-        lastName,
-        firstName,
-        email,
-        company,
-        picture,
-      } = await CustomersAPI.find(id);
+      const { lastName, firstName, email, company, picture } =
+        await CustomersAPI.find(id);
       setCustomer({ lastName, firstName, email, company });
       setCurrentFiles([
         {
@@ -83,8 +78,6 @@ const CustomerPage = ({ match, history }) => {
   // gestion de la soumission du formulaire
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    await saveCustomer();
 
     try {
       setErrors({});
